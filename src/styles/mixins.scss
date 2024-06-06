@@ -1,0 +1,53 @@
+//typography
+@mixin h1 {
+    font-family: Jont, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: -0.33px;
+}
+
+@mixin h2 {
+    font-family: Jont, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.25px;
+}
+
+@mixin h3 {
+    font-family: Jont, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+}
+
+@mixin h4 {
+    font-family: Jont, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+}
+
+@mixin body1 {
+    font-family: Jont, sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+@mixin body2 {
+    font-family: Jont, sans-serif;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+@mixin body3 {
+    font-family: Jont, sans-serif;
+    font-weight: 600; //semibold
+    font-size: 13px;
+    line-height: 19px;
+}

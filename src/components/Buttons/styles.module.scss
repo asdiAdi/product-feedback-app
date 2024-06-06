@@ -1,0 +1,51 @@
+@use 'sass:meta';
+@use 'sass:map';
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+$button-types: [
+    (
+        'key': '1',
+        'bg-default': v.$electric-purple,
+        'bg-hover': v.$bright-lilac,
+        'c-default': red,
+        'c-hover': blue,
+    )
+    (
+        'key': '2',
+        'bg-default': v.$ultramarine-blue,
+        'bg-hover': v.$lavender-blue,
+    )
+    (
+        'key': '3',
+        'bg-default': v.$dark-slate-blue,
+        'bg-hover': v.$waikawa-grey,
+    )
+    (
+        'key': '4',
+        'bg-default': v.$jasper,
+        'bg-hover': v.$light-coral,
+    )];
+
+@mixin apply-to-all($mixin, $list) {
+    @each $element in $list {
+        @include meta.apply($mixin, $element);
+    }
+}
+
+@mixin button-type($type) {
+    .button-#{map.get($type, 'key')} {
+        @include m.h4;
+        $bg-default: map.get($type, 'bg-default');
+        $bg-hover: map.get($type, 'bg-hover');
+        padding: 12px 24px;
+        color: map.get($type, 'c-default') or v.$catskill-white;
+        background-color: $bg-default;
+        &:hover {
+            color: map.get($type, 'c-hover') or v.$catskill-white;
+            background-color: $bg-hover or $bg-default;
+        }
+    }
+}
+
+@include apply-to-all(meta.get-mixin('button-type'), $button-types);
