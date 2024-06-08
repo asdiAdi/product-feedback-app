@@ -1,0 +1,36 @@
+@use '../../styles/variables' as v;
+
+.text-field {
+    border: none;
+    box-shadow: none;
+
+    font-weight: normal;
+    font-size: 15px;
+    color: v.$dark-slate-blue;
+
+    background-color: v.$ghost-white;
+    line-height: 22px;
+    min-width: 255px;
+    padding: 13px 24px;
+    border-radius: 5px;
+
+    &:active,
+    &:focus {
+        outline: 1px solid v.$ultramarine-blue;
+    }
+
+    &--error {
+        border: 1px solid v.$jasper;
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.error-message {
+    margin-top: 4px;
+    color: v.$jasper;
+    font-size: 14px;
+    font-weight: normal;
+}

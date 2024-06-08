@@ -6,25 +6,23 @@
 $button-types: [
     (
         'key': '1',
-        'bg-default': v.$electric-purple,
-        'bg-hover': v.$bright-lilac,
-        'c-default': red,
-        'c-hover': blue,
+        'default': v.$electric-purple,
+        'hover': v.$bright-lilac,
     )
     (
         'key': '2',
-        'bg-default': v.$ultramarine-blue,
-        'bg-hover': v.$lavender-blue,
+        'default': v.$ultramarine-blue,
+        'hover': v.$lavender-blue,
     )
     (
         'key': '3',
-        'bg-default': v.$dark-slate-blue,
-        'bg-hover': v.$waikawa-grey,
+        'default': v.$dark-slate-blue,
+        'hover': v.$waikawa-grey,
     )
     (
         'key': '4',
-        'bg-default': v.$jasper,
-        'bg-hover': v.$light-coral,
+        'default': v.$jasper,
+        'hover': v.$light-coral,
     )];
 
 @mixin apply-to-all($mixin, $list) {
@@ -35,17 +33,126 @@ $button-types: [
 
 @mixin button-type($type) {
     .button-#{map.get($type, 'key')} {
-        @include m.h4;
-        $bg-default: map.get($type, 'bg-default');
-        $bg-hover: map.get($type, 'bg-hover');
+        @include m.button-reset;
+        font-weight: bold;
+        font-size: 14px;
+
         padding: 12px 24px;
-        color: map.get($type, 'c-default') or v.$catskill-white;
-        background-color: $bg-default;
+        color: v.$catskill-white;
+        background-color: map.get($type, 'default');
+
         &:hover {
-            color: map.get($type, 'c-hover') or v.$catskill-white;
-            background-color: $bg-hover or $bg-default;
+            color: v.$catskill-white;
+            background-color: map.get($type, 'hover');
         }
     }
 }
 
 @include apply-to-all(meta.get-mixin('button-type'), $button-types);
+
+.button-back {
+    &-light,
+    &-dark {
+        @include m.button-reset;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 12px 24px;
+
+        svg {
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &-light {
+        color: v.$waikawa-grey;
+        path {
+            stroke: v.$ultramarine-blue;
+        }
+    }
+
+    &-dark {
+        color: v.$white;
+        background-color: v.$rhino;
+        path {
+            stroke: v.$moonraker;
+        }
+    }
+}
+
+.button-upvote {
+    @include m.button-reset;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: -0.18px;
+
+    color: v.$dark-slate-blue;
+    border-radius: 10px;
+    background-color: v.$catskill-white;
+
+    span {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    path {
+        stroke: v.$ultramarine-blue;
+    }
+    &:hover {
+        color: v.$dark-slate-blue;
+        background-color: v.$tropical-blue;
+        path {
+            stroke: v.$ultramarine-blue;
+        }
+    }
+
+    &--active {
+        background-color: v.$ultramarine-blue;
+        color: v.$white;
+        path {
+            stroke: v.$white;
+        }
+    }
+
+    &--horizontal {
+        svg {
+            margin-right: 8px;
+        }
+    }
+
+    &--vertical {
+        width: 40px;
+        height: 53px;
+
+        svg {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.button-tag {
+    @include m.button-reset;
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 13px;
+
+    color: v.$ultramarine-blue;
+    border-radius: 10px;
+    background-color: v.$magnolia;
+
+    &:hover {
+        color: v.$ultramarine-blue;
+        background-color: v.$tropical-blue;
+    }
+
+    &--active {
+        background-color: v.$ultramarine-blue;
+        color: v.$white;
+    }
+}

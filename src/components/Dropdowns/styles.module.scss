@@ -1,0 +1,26 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.dropdown-upvote {
+    button {
+        @include m.button-reset;
+        background-color: v.$rhino;
+        color: v.$catskill-white;
+        font-size: 14px;
+        padding: 26px 17px;
+        border-radius: 10px;
+
+        svg {
+            margin-left: 6px;
+            path {
+                stroke: v.$white;
+            }
+        }
+    }
+
+    //&--active {
+    //    button {
+    //        color: v.$catskill-white;
+    //    }
+    //}
+}
